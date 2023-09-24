@@ -22,7 +22,7 @@ class PostCardTopBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
+        GestureDetector(
           onTap: () =>
               Get.toNamed(RouteNames.showProfile, arguments: post.userId!),
           child: Text(
