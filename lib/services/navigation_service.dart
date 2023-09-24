@@ -25,7 +25,7 @@ class NavigationService extends GetxService {
       const Search(),
       AddThread(),
       const NotificationPage(),
-      Profile()
+      const Profile()
     ];
   }
 }

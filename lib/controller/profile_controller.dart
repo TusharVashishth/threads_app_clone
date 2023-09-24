@@ -93,7 +93,6 @@ class ProfileController extends GetxController {
       showSnackBar("Error", error.message);
     } on StorageException catch (error) {
       loading.value = false;
-      print("The storage accesss $error");
       showSnackBar("Error", error.message);
     }
   }
@@ -101,11 +100,28 @@ class ProfileController extends GetxController {
   // * Delete thread
   Future<void> deleteThread(int postId) async {
     try {
-      // await SupabaseService.client.from("posts").delete().eq("id", postId);
+      await SupabaseService.client.from("posts").delete().eq("id", postId);
 
       posts.removeWhere((element) => element.id == postId);
-
+      if (Get.isDialogOpen == true) {
+        Get.back();
+      }
       showSnackBar("Success", "thread deleted successfully!");
+    } catch (e) {
+      showSnackBar("Error", "Something went wrong.pls try again.");
+    }
+  }
+
+  // * Delete thread
+  Future<void> deleteReply(int replyId) async {
+    try {
+      await SupabaseService.client.from("comments").delete().eq("id", replyId);
+
+      comments.removeWhere((element) => element?.id == replyId);
+      if (Get.isDialogOpen == true) {
+        Get.back();
+      }
+      showSnackBar("Success", "Reply deleted successfully!");
     } catch (e) {
       showSnackBar("Error", "Something went wrong.pls try again.");
     }

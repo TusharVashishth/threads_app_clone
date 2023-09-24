@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:threads_clone/models/notification_model.dart';
 import 'package:threads_clone/services/supabase_service.dart';

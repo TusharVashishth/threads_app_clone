@@ -35,6 +35,7 @@ class PostCardTopBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(formateDateFromNow(post.createdAt!)),
+            const SizedBox(width: 10),
             isAuthPost
                 ? GestureDetector(
                     onTap: () {

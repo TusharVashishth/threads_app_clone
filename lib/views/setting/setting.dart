@@ -22,7 +22,7 @@ class Setting extends StatelessWidget {
               title: const Text("Logout"),
               onTap: () {
                 confirmBox("Are you sure?", "Do you want to logout ?", () {
-                  controller.logout();
+                  // controller.logout();
                 });
               },
             )

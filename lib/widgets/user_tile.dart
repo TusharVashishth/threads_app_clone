@@ -12,7 +12,10 @@ class UserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleImage(url: user.metadata!.image!),
+      leading: Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: CircleImage(url: user.metadata?.image),
+      ),
       title: Text(user.metadata!.name!),
       titleAlignment: ListTileTitleAlignment.top,
       trailing: OutlinedButton(

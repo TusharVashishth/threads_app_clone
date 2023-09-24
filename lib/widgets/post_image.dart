@@ -1,10 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:threads_clone/routes/route_names.dart';
 import 'package:threads_clone/utils/helper.dart';
-import 'package:threads_clone/views/thread/show_image.dart';
 
 class PostImage extends StatelessWidget {
   final String url;

@@ -36,9 +36,14 @@ class HomeController extends GetxController {
       RealtimeListenTypes.postgresChanges,
       ChannelFilter(event: 'INSERT', schema: 'public', table: 'posts'),
       (payload, [ref]) {
-        print('Change received: ${payload.toString()}');
         final PostModel post = PostModel.fromJson(payload["new"]);
         updateFeed(post);
+      },
+    ).on(
+      RealtimeListenTypes.postgresChanges,
+      ChannelFilter(event: 'DELETE', schema: 'public', table: 'posts'),
+      (payload, [ref]) {
+        posts.removeWhere((element) => element.id == payload["old"]["id"]);
       },
     ).subscribe();
   }

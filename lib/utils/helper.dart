@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:threads_clone/utils/env.dart';
+import 'package:threads_clone/widgets/confirm_box.dart';
 import 'package:uuid/uuid.dart';
 
 void showSnackBar(String title, String message) {
@@ -23,14 +24,13 @@ void showSnackBar(String title, String message) {
 
 // * Confirm box
 void confirmBox(String title, String text, VoidCallback callback) {
-  Get.defaultDialog(
+  Get.dialog(
+    ConfirmBox(
       title: title,
-      middleText: text,
-      confirm: ElevatedButton(
-        onPressed: callback,
-        child: const Text("continue"),
-      ),
-      backgroundColor: const Color(0xff242424));
+      text: text,
+      callback: callback,
+    ),
+  );
 }
 
 // * Pick Image

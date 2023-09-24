@@ -19,7 +19,6 @@ class _SearchState extends State<Search> {
 
   void searchUser(String? name) async {
     if (name != null) {
-      print("The name is $name");
       await controller.searchUser(name);
     }
   }

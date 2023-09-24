@@ -180,7 +180,10 @@ class _ProfileState extends State<Profile> {
                                 physics: const BouncingScrollPhysics(),
                                 itemCount: controller.comments.length,
                                 itemBuilder: (context, index) => CommentCard(
-                                    comment: controller.comments[index]!),
+                                  comment: controller.comments[index]!,
+                                  isAuthCard: true,
+                                  callback: controller.deleteReply,
+                                ),
                               )
                             else
                               const Center(
