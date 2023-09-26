@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:threads_clone/services/navigation_service.dart';
-import 'package:threads_clone/services/supabase_service.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
   final NavigationService navigationService = Get.put(NavigationService());
-  final SupabaseService supabaseService = Get.put(SupabaseService());
 
   @override
   Widget build(BuildContext context) {

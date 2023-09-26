@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:threads_clone/routes/route_names.dart';
 import 'package:threads_clone/routes/routes.dart';
+import 'package:threads_clone/services/supabase_service.dart';
 import 'package:threads_clone/utils/storage/storage.dart';
 import 'package:threads_clone/utils/theme/theme.dart';
 
@@ -11,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await GetStorage.init();
-
+  Get.put(SupabaseService());
   runApp(const MyApp());
 }
 

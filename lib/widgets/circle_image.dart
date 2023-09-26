@@ -19,15 +19,15 @@ class CircleImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (url != null)
-          CircleAvatar(
-            backgroundImage: NetworkImage(getS3Url(url!)),
-            radius: radius,
-          )
-        else if (path != null)
+        if (path != null)
           CircleAvatar(
             radius: radius,
             backgroundImage: FileImage(path!),
+          )
+        else if (url != null)
+          CircleAvatar(
+            backgroundImage: NetworkImage(getS3Url(url!)),
+            radius: radius,
           )
         else
           CircleAvatar(
