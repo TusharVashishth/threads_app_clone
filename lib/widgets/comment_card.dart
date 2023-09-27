@@ -26,7 +26,7 @@ class CommentCard extends StatelessWidget {
             SizedBox(
               width: context.width * 0.12,
               child: CircleImage(
-                url: comment.user!.metadata!.image!,
+                url: comment.user!.metadata?.image,
               ),
             ),
             const SizedBox(width: 10),

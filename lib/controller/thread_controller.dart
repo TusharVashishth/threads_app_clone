@@ -66,6 +66,8 @@ class ThreadController extends GetxController {
   // * Show Post
   Future<void> show(int postId) async {
     try {
+      comments.value = [];
+      post.value = PostModel();
       showPostLoading.value = true;
       final data = await SupabaseService.client.from("posts").select('''
     id ,content , image ,created_at ,comment_count , like_count,user_id,
@@ -91,10 +93,11 @@ class ThreadController extends GetxController {
     id ,reply ,created_at ,user_id,
     user:user_id (email , metadata)
 ''').eq("post_id", postId);
-      commentLoading.value = false;
+
       if (data.isNotEmpty) {
         comments.value = [for (var item in data) CommentModel.fromJson(item)];
       }
+      commentLoading.value = false;
     } catch (e) {
       commentLoading.value = false;
       showSnackBar("Error", "Somethign went wrong!");

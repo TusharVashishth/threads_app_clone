@@ -30,6 +30,8 @@ class SupabaseService extends GetxService {
       final AuthChangeEvent event = data.event;
       if (event == AuthChangeEvent.userUpdated) {
         currentUser.value = data.session?.user;
+      } else if (event == AuthChangeEvent.signedIn) {
+        currentUser.value = data.session?.user;
       }
     });
   }

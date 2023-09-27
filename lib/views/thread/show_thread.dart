@@ -41,7 +41,8 @@ class _ShowThreadState extends State<ShowThread> {
                     // * load thread comments
                     if (controller.commentLoading.value)
                       const Loading()
-                    else if (controller.comments.isNotEmpty)
+                    else if (controller.comments.isNotEmpty &&
+                        controller.commentLoading.value == false)
                       ListView.builder(
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),

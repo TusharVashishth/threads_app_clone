@@ -64,7 +64,7 @@ class ProfileController extends GetxController {
   Future<void> updateProfile(String userId, String description) async {
     try {
       loading.value = true;
-      var uploadedPath = "";
+
       // * Check if image exits then upload it first
       if (image.value != null && image.value!.existsSync()) {
         final String dir = "$userId/profile.jpg";
@@ -74,14 +74,18 @@ class ProfileController extends GetxController {
                   image.value!,
                   fileOptions: const FileOptions(upsert: true),
                 );
-        uploadedPath = path;
+        await SupabaseService.client.auth.updateUser(
+          UserAttributes(
+            data: {"image": path},
+          ),
+        );
       }
 
+      // * Update description
       await SupabaseService.client.auth.updateUser(
         UserAttributes(
           data: {
             "description": description,
-            "image": uploadedPath.isNotEmpty ? uploadedPath : null
           },
         ),
       );
