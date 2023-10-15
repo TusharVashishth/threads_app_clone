@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:threads_clone/controller/thread_controller.dart';
+import 'package:threads_clone/services/supabase_service.dart';
 import 'package:threads_clone/widgets/add_thread_appbar.dart';
 import 'package:threads_clone/widgets/thread_image_preview.dart';
 
 class AddThread extends StatelessWidget {
   AddThread({super.key});
   final ThreadController controller = Get.put(ThreadController());
+  final SupabaseService supabaseService = Get.find<SupabaseService>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,12 @@ class AddThread extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "tushar.vashishth",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
+                          Obx(
+                            () => Text(
+                              supabaseService
+                                  .currentUser.value!.userMetadata?["name"],
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           TextField(

@@ -32,7 +32,7 @@ class HomeController extends GetxController {
 
   // * Listen post changes
   void listenPostChange() {
-    SupabaseService.client.channel('public:countries').on(
+    SupabaseService.client.channel('public:posts').on(
       RealtimeListenTypes.postgresChanges,
       ChannelFilter(event: 'INSERT', schema: 'public', table: 'posts'),
       (payload, [ref]) {
