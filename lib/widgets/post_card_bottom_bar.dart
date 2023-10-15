@@ -22,6 +22,9 @@ class _PostCardBottombarState extends State<PostCardBottombar> {
     setState(() {
       likeStatus = status;
     });
+    if (likeStatus == "0") {
+      widget.post.likes = [];
+    }
     await controller.likeDislike(status, widget.post.id!, widget.post.userId!,
         supabaseService.currentUser.value!.id);
   }
